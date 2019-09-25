@@ -12,6 +12,66 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <header>
+        <h1>Tic Tac Toe</h1>
+      </header>
+      <section class="sign-in">
+        <p>sign in or sign up to play</p>
+        <button id=sign-up class="btn btn-info">sign up</button>
+        <button id=sign-in class="btn btn-info">sign in</button>
+        <button id=sign-out class="btn btn-info">sign out</button>
+        <button id=change-pass class="btn btn-info">change password</button>
+
+        <br>
+        <form id="user-auth">
+          <label for="email">email:</label>
+          <input id="email" type="email" name="credentials[email]" placeholder="user@email.com"><br>
+          <label for="password">password:</label>
+          <input id="password" type="password" name="credentials[password]" placeholder="user password"><br>
+          <label for="password_confirm">confirm password:</label>
+          <input id="password-confirm" type="password" name="credentials[password_confirmation]" placeholder="confirm password"><br>
+          <label for="old-pass">old password:</label>
+          <input id="old-pass" type="password" name="passwords[old]" placeholder="old password"><br>
+          <label for="new-pass">new password:</label>
+          <input id="new-pass" type="password" name="passwords[new]" placeholder="new password"></br>
+          <button type="submit" id="submit" class="btn btn-primary">submit</button>
+        </form>
+
+      </section>
+      <h3 class="player-display">Player 1</h3>
+      <section class="game-board container">
+        <div class="square col-4" id="square-1">square 1</div>
+        <div class="square col-4" id="square-2">square 2</div>
+        <div class="square col-4" id="square-3">square 3</div>
+        <div class="square col-4" id="square-4">square 4</div>
+        <div class="square col-4" id="square-5">square 5</div>
+        <div class="square col-4" id="square-6">square 6</div>
+        <div class="square col-4" id="square-7">square 7</div>
+        <div class="square col-4" id="square-8">square 8</div>
+        <div class="square col-4" id="square-9">square 9</div>
+      </section>
+
+      <footer class="footer">
+        <p>created by Alex Tsuji 2019</p>
+        <p>General Assembly SEI 05</p>
+
+      </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
 </html>

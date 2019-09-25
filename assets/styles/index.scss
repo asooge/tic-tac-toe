@@ -1,1 +1,35 @@
 @import '~bootstrap/scss/bootstrap';
+
+.sign-in {
+  border: solid black 1px;
+}
+
+header {
+  text-align: center;
+  background-color: #4287f5;
+
+}
+
+.player-display {
+  text-align: center;
+}
+
+.game-board {
+  border: solid black 1px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vw;
+  max-width: 600px;
+  max-height: 600px;
+  padding: 0;
+}
+
+.square {
+  border: solid black 1px;
+
+}
+
+footer {
+  background-color: #4287f5;
+}
