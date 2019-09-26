@@ -11,19 +11,24 @@ const playGame = function() {
   api.createGame()
     .then(gameEvents)
 }
+const checkMove = function () {
+  if (store.game.cells[store.currentClick]) {
+    api.updateGame()
+      .then(ui.updateBoard)
+      .catch(ui.turnFail)
+  }
+}
+
 
 const turnX = function (event) {
-  console.log('data number is')
-  console.log(event.target.dataset.sq)
-  game.currentClick = parseInt(event.target.dataset.sq)
-  console.log('data as a number is')
-  console.log(game.currentClick)
-  console.log('game data is:')
-  console.log(game.currentGame)
-  game.switchPlayer()
-  api.updateGame()
-    .then(ui.updateBoard)
-    .catch(ui.turnFail)
+  store.currentClick = parseInt(event.target.dataset.sq)
+  if (!store.game.cells[store.currentClick]) {
+    api.updateGame()
+      .then(ui.updateBoard)
+      .catch(ui.turnFail)
+  } else {
+    console.log('already clicked. need function to animate already clicked')
+  }
 }
 
 const gameEvents = function(gameData) {

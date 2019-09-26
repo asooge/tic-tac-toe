@@ -1,8 +1,6 @@
 const store = require('../store')
 
-const currentGame = ""
 store.currentMove = "x"
-const currentClick = ""
 
 const switchPlayer = function () {
   if (store.currentMove === "x") {
@@ -14,7 +12,5 @@ const switchPlayer = function () {
 }
 
 module.exports = {
-  currentGame,
-  switchPlayer,
-  currentClick
+  switchPlayer
 }

@@ -24,7 +24,7 @@ const updateGame = function () {
     data: {
       "game": {
         "cell": {
-          "index": game.currentClick,
+          "index": store.currentClick,
           "value": store.currentMove
         },
         "over": false
