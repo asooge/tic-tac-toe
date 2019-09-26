@@ -1,5 +1,6 @@
 const config = require('../config')
 const store = require('./../store')
+const game = require('./game-logic')
 
 const createGame = function () {
   console.log("url is" + config.apiUrl)
@@ -13,12 +14,26 @@ const createGame = function () {
   })
 }
 
-// const updateGame = function () {
-//   return $.ajax({
-//     url: config.apiUrl + '/games/
-//   })
-// }
+const updateGame = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games/' +game.currentGame.id,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: "PATCH",
+    data: `{
+      "game": {
+        "cell": {
+          "index": 0,
+          "value": "x"
+        },
+        "over": false
+      }
+    }`
+  })
+}
 
 module.exports = {
-  createGame
+  createGame,
+  updateGame
 }

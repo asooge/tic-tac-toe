@@ -11,26 +11,29 @@ const playGame = function() {
 }
 
 const turnX = function (event) {
-  console.log(event)
+  console.log('data number is')
+  console.log(event.target.dataset.sq)
+  game.currentClick = parseInt(event.target.dataset.sq)
+  console.log('data as a number is')
+  console.log(game.currentClick)
   console.log('game data is:')
-
-  // api.updateGame
-  //   .then(ui.updateBoard)
+  console.log(game.currentGame)
+  api.updateGame()
+    .then(ui.updateBoard)
 }
 
 const gameEvents = function(gameData) {
-  game.currentGame = gameData
-
-
-  $('#square-0').on('click', turnX)
-  $('#square-1').on('click', turnX)
-  $('#square-2').on('click', turnX)
-  $('#square-3').on('click', turnX)
-  $('#square-4').on('click', turnX)
-  $('#square-5').on('click', turnX)
-  $('#square-6').on('click', turnX)
-  $('#square-7').on('click', turnX)
-  $('#square-8').on('click', turnX)
+  game.currentGame = gameData.game
+  $('.game-board').on('click', turnX)
+  // $('#square-0').on('click', turnX)
+  // $('#square-1').on('click', turnX)
+  // $('#square-2').on('click', turnX)
+  // $('#square-3').on('click', turnX)
+  // $('#square-4').on('click', turnX)
+  // $('#square-5').on('click', turnX)
+  // $('#square-6').on('click', turnX)
+  // $('#square-7').on('click', turnX)
+  // $('#square-8').on('click', turnX)
 }
 
 module.exports = {
