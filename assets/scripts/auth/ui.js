@@ -1,7 +1,8 @@
 const store = require('../store')
 
 const onSignUpSuccess = function (formData) {
-  $('#message-display').text(`sign up success: ${store.user.email}`)
+  console.log(formData)
+  $('#message-display').text(`sign up success: ${formData.user.email}`)
 }
 
 const onSignUpFailure = function () {
