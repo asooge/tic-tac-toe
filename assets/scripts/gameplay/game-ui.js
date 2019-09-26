@@ -4,7 +4,7 @@ const game = require('./game-logic')
 const displayPlayer = function () {
   if (store.currentMove === "x") {
     $('#player-display').text('Player 1').css('color', 'black')
-  } else {
+  } else if (store.currentMove === "o") {
     $('#player-display').text('Player 2').css('color', 'blue')
   }
 }
