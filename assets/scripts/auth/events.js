@@ -23,6 +23,9 @@ const clickSignOut = function () {
   display.status.signOut = true
   console.log(display.status)
   display.updateDisplay()
+  api.signOut()
+    .then(ui.onSignOutSuccess)
+    .catch(ui.onSignOutFailure)
 }
 const clickChangePass = function () {
   console.log("change password success")
@@ -50,6 +53,13 @@ const onSubmit = function (event) {
     api.signIn(formData)
       .then(ui.onSignInSuccess)
       .catch(ui.onSignInFailure)
+  } else if (display.status.changePass) {
+    console.log("changePass working")
+    delete formData.credentials
+    console.log(formData)
+    api.changePassword(formData)
+      .then(ui.onChangePasswordSuccess)
+      .catch(ui.onChangePasswordFailure)
   }
 }
 

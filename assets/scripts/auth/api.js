@@ -20,7 +20,29 @@ const signIn = function (formData) {
   })
 }
 
+const signOut = function () {
+  return $.ajax ({
+    method: "DELETE",
+    url: config.apiUrl + '/sign-out',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
+const changePassword = function (formData) {
+  return $.ajax ({
+    method: "PATCH",
+    url: config.apiUrl + '/change-password',
+    headers: {
+      Authorization: `Token token=${store.user.token}`},
+    data: formData
+  })
+}
+
 module.exports = {
   signUp,
-  signIn
+  signIn,
+  signOut,
+  changePassword
 }
