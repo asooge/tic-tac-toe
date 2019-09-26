@@ -16,20 +16,20 @@ const createGame = function () {
 
 const updateGame = function () {
   return $.ajax({
-    url: config.apiUrl + '/games/' +game.currentGame.id,
+    url: config.apiUrl + '/games/' +store.game.id,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
     method: "PATCH",
-    data: `{
+    data: {
       "game": {
         "cell": {
-          "index": 0,
-          "value": "x"
+          "index": game.currentClick,
+          "value": store.currentMove
         },
         "over": false
       }
-    }`
+    }
   })
 }
 
