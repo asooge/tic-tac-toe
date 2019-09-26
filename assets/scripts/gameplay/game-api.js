@@ -13,6 +13,12 @@ const createGame = function () {
   })
 }
 
+// const updateGame = function () {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/
+//   })
+// }
+
 module.exports = {
   createGame
 }

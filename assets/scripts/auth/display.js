@@ -14,7 +14,7 @@ const status = {
 }
 const clearDisplay = function () {
   $('.clear-auth').hide()
-  $('#player-display').hide()
+  $('#player-display, #play-game').hide()
 }
 
 const loadDisplay = function () {

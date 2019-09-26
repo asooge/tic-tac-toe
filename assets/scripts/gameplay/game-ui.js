@@ -1,7 +1,7 @@
-const onCreateGame = function(gameData) {
-  console.log(gameData)
+const updateBoard = function () {
+  console.log('update board working')
 }
 
 module.exports = {
-  onCreateGame
+  updateBoard
 }

@@ -13,7 +13,7 @@ const onSignInSuccess = function (formData) {
   console.log("sign in successful")
   store.user = formData.user
   console.log(store)
-  $('#change-pass, #sign-out').show()
+  $('#change-pass, #sign-out, #play-game').show()
   $('#sign-up, #sign-in, #enter-email, #enter-password, #submit').hide()
   $('#user-info').text('')
   $('#message-display').text(`signed in as: ${store.user.email}`)
