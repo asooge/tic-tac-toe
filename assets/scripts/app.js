@@ -7,12 +7,14 @@
 // require('./example')
 const events = require('./auth/events')
 const display = require('./auth/display')
+const game = require('./gameplay/events')
 
 $(() => {
-  display.loadDisplay ()
+  display.loadDisplay()
   $('#sign-up').on('click', events.clickSignUp)
   $('#sign-in').on('click', events.clickSignIn)
   $('#sign-out').on('click', events.clickSignOut)
   $('#change-pass').on('click', events.clickChangePass)
   $('#user-auth').on('submit', events.onSubmit)
+  $('#play-game').on('click', game.playGame)
 })
