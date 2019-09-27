@@ -1,16 +1,17 @@
 const store = require('../store')
-
 const api = require('./game-api')
 const ui = require('./game-ui')
 const game = require('./game-logic')
 
-const playGame = function() {
-  console.log("game is playing")
-  store.currentMove = "x"
+const playGame = function () {
+  console.log('game is playing')
+  store.currentMove = 'x'
   store.over = false
   console.log(store)
   ui.displayPlayer()
   $('#play-game').hide()
+  $('.game-board').children().text('square').css('color', 'transparent')
+  $('.game-board').off('click', turnX)
   $('#player-display').fadeIn(800)
   api.createGame()
     .then(gameEvents)
