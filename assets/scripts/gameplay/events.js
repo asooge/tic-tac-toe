@@ -16,8 +16,11 @@ const playGame = function() {
 }
 
 const turnX = function (event) {
+  console.log(event)
+  store.event = event
   store.currentClick = parseInt(event.target.dataset.sq)
   if (!store.game.cells[store.currentClick]) {
+    ui.changeBoard(event)
     api.updateGame()
       .then(ui.updateBoard)
       .catch(ui.turnFail)

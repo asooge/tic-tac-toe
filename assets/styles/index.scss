@@ -27,8 +27,13 @@ header {
 
 
 .square {
+  padding: 0;
+  display: flex;
   border: solid black 1px;
-
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: transparent;
 }
 
 footer {
