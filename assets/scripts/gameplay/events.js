@@ -6,19 +6,14 @@ const game = require('./game-logic')
 
 const playGame = function() {
   console.log("game is playing")
+  store.currentMove = "x"
+  console.log(store)
+  ui.displayPlayer()
   $('#play-game').hide()
   $('#player-display').fadeIn(800)
   api.createGame()
     .then(gameEvents)
 }
-const checkMove = function () {
-  if (store.game.cells[store.currentClick]) {
-    api.updateGame()
-      .then(ui.updateBoard)
-      .catch(ui.turnFail)
-  }
-}
-
 
 const turnX = function (event) {
   store.currentClick = parseInt(event.target.dataset.sq)

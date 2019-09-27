@@ -1,4 +1,5 @@
 const store = require('../store')
+const game = require('../gameplay/events')
 
 const onSignUpSuccess = function (formData) {
   console.log(formData)
@@ -27,6 +28,7 @@ const onSignInFailure = function () {
 const onSignOutSuccess = function () {
   $('#user-info').text(`${store.user.email} - signed out`)
   $('#message-display').text(`sign in or sign up to play`)
+  $('.game-board').off('click', game.turnX)
 }
 
 const onSignOutFailure = function () {

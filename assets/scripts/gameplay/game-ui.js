@@ -12,8 +12,8 @@ const displayPlayer = function () {
 const updateBoard = function (gameBoard) {
   console.log('update board working')
   game.switchPlayer()
-  store.game = gameBoard.game
   displayPlayer()
+  store.game = gameBoard.game
   console.log(store)
 }
 
@@ -23,5 +23,6 @@ const turnFail = function () {
 
 module.exports = {
   updateBoard,
-  turnFail
+  turnFail,
+  displayPlayer
 }
