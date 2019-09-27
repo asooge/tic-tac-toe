@@ -1,4 +1,5 @@
 const store = require('../store')
+const event = require('./events')
 
 const displayPlayer = function (gameBoard) {
   if (store.currentMove === 'x') {
@@ -22,9 +23,14 @@ const turnFail = function () {
   console.log('turn update failed')
 }
 
-const showWinner = function () {
-  $('#player-display').text(`Player ${store.winPlayer.toUpperCase()} Wins!`)
+const showWinner = function (winner) {
+  if (winner === "tie") {
+    $('#player-display').text('Tie Game')
+  } else {
+    $('#player-display').text(`Player ${store.winPlayer.toUpperCase()} Wins!`)
+  }
   $('#play-game').show()
+  $('.game-board').off('click', event.turnX)
 }
 
 const endGameFail = function () {
