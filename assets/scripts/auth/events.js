@@ -2,6 +2,7 @@ const display = require('./display')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
+const uiGame = require('../gameplay/game-ui')
 
 const clickSignUp = function () {
   console.log("sign-up success")
@@ -23,6 +24,7 @@ const clickSignOut = function () {
   display.status.signOut = true
   console.log(display.status)
   display.updateDisplay()
+  uiGame.resetBoard()
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)

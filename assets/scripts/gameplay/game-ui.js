@@ -1,12 +1,17 @@
 const store = require('../store')
 const game = require('./game-logic')
 
-const displayPlayer = function () {
+const displayPlayer = function (gameBoard) {
   if (store.currentMove === "x") {
-    $('#player-display').text('Player 1').css('color', 'black')
+    $('#player-display').text('Player X').css('color', 'black')
   } else if (store.currentMove === "o") {
-    $('#player-display').text('Player 2').css('color', 'blue')
+    $('#player-display').text('Player O').css('color', 'blue')
   }
+
+}
+
+const resetBoard = function () {
+  $('.game-board').children().text('square').css('color', 'transparent')
 }
 
 const changeBoard = function(event) {
@@ -15,21 +20,14 @@ const changeBoard = function(event) {
   $(event.target).text(store.currentMove).css('color', 'black')
 }
 
-const updateBoard = function (gameBoard) {
-  console.log('update board working')
-  game.switchPlayer()
-  displayPlayer()
-  store.game = gameBoard.game
-  console.log(store)
-}
 
 const turnFail = function () {
   console.log('turn update failed')
 }
 
 module.exports = {
-  updateBoard,
   turnFail,
   displayPlayer,
-  changeBoard
+  changeBoard,
+  resetBoard
 }

@@ -1,6 +1,5 @@
 const config = require('../config')
 const store = require('./../store')
-const game = require('./game-logic')
 
 const createGame = function () {
   console.log("url is" + config.apiUrl)

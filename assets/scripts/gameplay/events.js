@@ -7,6 +7,7 @@ const game = require('./game-logic')
 const playGame = function() {
   console.log("game is playing")
   store.currentMove = "x"
+  store.over = false
   console.log(store)
   ui.displayPlayer()
   $('#play-game').hide()
@@ -15,14 +16,28 @@ const playGame = function() {
     .then(gameEvents)
 }
 
+const switchPlayer = function (gameBoard) {
+  if (store.currentMove === 'x') {
+    store.currentMove = 'o'
+  } else if (store.currentMove === 'o') {
+    store.currentMove = 'x'
+  }
+  console.log(store.currentMove)
+  store.game = gameBoard.game
+}
+
 const turnX = function (event) {
   console.log(event)
   store.event = event
   store.currentClick = parseInt(event.target.dataset.sq)
   if (!store.game.cells[store.currentClick]) {
     ui.changeBoard(event)
+    console.log('store over is')
+    console.log(store)
     api.updateGame()
-      .then(ui.updateBoard)
+      .then(switchPlayer)
+      .then(ui.displayPlayer)
+      .then(game.checkWinner)
       .catch(ui.turnFail)
   } else {
     console.log('already clicked. need function to animate already clicked')
