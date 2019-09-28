@@ -3,6 +3,7 @@ const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const ui = require('./ui')
 const uiGame = require('../gameplay/game-ui')
+const store = require('../store')
 
 const clickSignUp = function () {
   console.log("sign-up success")
@@ -31,10 +32,19 @@ const clickSignOut = function () {
 }
 const clickChangePass = function () {
   console.log("change password success")
-  display.status.reset()
-  display.status.changePass = true
-  console.log(display.status)
-  display.updateDisplay()
+  if (!display.status.changePass) {
+    display.status.reset()
+    display.status.changePass = true
+    console.log(display.status)
+    display.updateDisplay()
+    $('#player-display').show()
+  } else {
+    $('#change-pass, #sign-out, #play-game').show()
+    $('#sign-up, #sign-in, #enter-email, #enter-password, #submit, #enter-old, #enter-new').hide()
+    // $('#user-info').text('')
+    $('#message-display').text(`signed in as: ${store.user.email}`)
+    display.status.changePass = false
+  }
 }
 
 const onSubmit = function (event) {
