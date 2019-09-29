@@ -1,10 +1,10 @@
-const events = require('./events.js')
 
 const status = {
   signUp: false,
   signIn: true,
   signOut: false,
   changePass: false,
+  gameData: false,
   reset: function () {
     this.signUp = false
     this.signIn = false
@@ -14,7 +14,7 @@ const status = {
 }
 const clearDisplay = function () {
   $('.clear-auth').hide()
-  $('#player-display, #play-game').hide()
+  $('#player-display, #play-game, .game-data').hide()
 }
 
 const loadDisplay = function () {

@@ -2,6 +2,28 @@ const store = require('../store')
 const api = require('./game-api')
 const ui = require('./game-ui')
 const game = require('./game-logic')
+const uiAuth = require('../auth/display')
+
+const storeGameData = function(data) {
+  store.gameData = data
+  store.gameData.wins = 0
+  store.gameData.ties = 0
+  store.gameData.total = store.gameData.games.length
+  store.gameData.games.forEach(game.countWins)
+  store.gameData.loss = store.gameData.total - store.gameData.wins - store.gameData.ties
+  ui.displayData()
+}
+
+const showData = function () {
+  uiAuth.status.gameData = !uiAuth.status.gameData
+  if (uiAuth.status.gameData) {
+    api.getData()
+      .then(storeGameData)
+  } else {
+    $('.game-data').hide()
+    $('#game-data').show()
+  }
+}
 
 const playGame = function () {
   console.log('game is playing')
@@ -60,5 +82,6 @@ const gameEvents = function(gameData) {
 }
 
 module.exports = {
-  playGame
+  playGame,
+  showData
 }

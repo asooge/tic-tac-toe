@@ -27,6 +27,45 @@ const checkWinner = function () {
   }
 }
 
+const countWins = function (game) {
+  const board = game.cells
+  if (board[0] === 'x' && board[0] === board[1] && board[1] === board[2]) {
+    store.gameData.wins++
+  } else if (board[0] === 'x' && board[0] === board[4] && board[4] === board[8]) {
+    store.gameData.wins++
+  } else if (board[0] === 'x' && board[0] === board[3] && board[3] === board[6]) {
+    store.gameData.wins++
+  } else if (board[3] === 'x' && board[3] === board[4] && board[4] === board[5]) {
+    store.gameData.wins++
+  } else if (board[6] === 'x' && board[6] === board[7] && board[7] === board[8]) {
+    store.gameData.wins++
+  } else if (board[1] === 'x' && board[1] === board[4] && board[4] === board[7]) {
+    store.gameData.wins++
+  } else if (board[2] === 'x' && board[2] === board[5] && board[5] === board[8]) {
+    store.gameData.wins++
+  } else if (board[2] === 'x' && board[2] === board[4] && board[4] === board[6]) {
+    store.gameData.wins++
+  } else if (board[0] === 'o' && board[0] === board[1] && board[1] === board[2]) {
+    store.gameData.loss++
+  } else if (board[0] === 'o' && board[0] === board[4] && board[4] === board[8]) {
+    store.gameData.loss++
+  } else if (board[0] === 'o' && board[0] === board[3] && board[3] === board[6]) {
+    store.gameData.loss++
+  } else if (board[3] === 'o' && board[3] === board[4] && board[4] === board[5]) {
+    store.gameData.loss++
+  } else if (board[6] === 'o' && board[6] === board[7] && board[7] === board[8]) {
+    store.gameData.loss++
+  } else if (board[1] === 'o' && board[1] === board[4] && board[4] === board[7]) {
+    store.gameData.loss++
+  } else if (board[2] === 'o' && board[2] === board[5] && board[5] === board[8]) {
+    store.gameData.loss++
+  } else if (board[2] === 'o' && board[2] === board[4] && board[4] === board[6]) {
+    store.gameData.loss++
+  } else if (board.every(x => x === 'x' || x === 'o')) {
+    store.gameData.ties++
+  }
+}
+
 const gameOver = function (winner) {
   store.winPlayer = store.game.cells[winner]
   api.endGame()
@@ -45,5 +84,6 @@ const winnerIs = function (winner) {
 }
 
 module.exports = {
-  checkWinner
+  checkWinner,
+  countWins
 }

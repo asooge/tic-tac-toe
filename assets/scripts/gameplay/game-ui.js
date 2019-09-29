@@ -37,6 +37,13 @@ const endGameFail = function () {
 
 }
 
+const displayData = function () {
+  console.log(store)
+  $('#games-played').text('Games Played: ' + store.gameData.games.length.toString())
+  $('#win-ratio').text(`Win-Loss-Tie Ratio: ${store.gameData.wins}:${store.gameData.loss}:${store.gameData.ties}`)
+  $('#win-percentage').text(`Win Percentage: ${Math.floor(store.gameData.wins/store.gameData.games.length*100)}%`)
+  $('.game-data').show()
+}
 
 module.exports = {
   turnFail,
@@ -44,5 +51,6 @@ module.exports = {
   changeBoard,
   resetBoard,
   showWinner,
-  endGameFail
+  endGameFail,
+  displayData
 }

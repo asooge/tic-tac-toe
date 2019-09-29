@@ -38,15 +38,23 @@
             <input id="password-confirm" type="password" name="credentials[password_confirmation]" placeholder="confirm password">
           </div>
           <div id="enter-old" class="clear-auth">
-            <label for="old-pass">old password:</label>
+            <label for="old-pass">old pass:</label>
             <input id="old-pass" type="password" name="passwords[old]" placeholder="old password">
           </div>
           <div id="enter-new" class="clear-auth">
-            <label for="new-pass">new password:</label>
+            <label for="new-pass">new pass:</label>
             <input id="new-pass" type="password" name="passwords[new]" placeholder="new password">
           </div>
           <button id="submit" class="btn btn-primary clear-auth">submit</button>
         </form>
+      </section>
+
+      <section id="game-display">
+        <button class="btn btn-warning game-data"id="game-data">game data</button>
+        <p id="games-played" class="game-data"></p>
+        <p id='win-ratio' class="game-data"></p>
+        <p id='win-percentage' class="game-data"></p>
+
       </section>
 
       <h3 class="player-display" id="player-display">Player 1</h3>
@@ -62,28 +70,11 @@
         <div class="square col-4" id="square-7" data-sq="7">square</div>
         <div class="square col-4" id="square-8" data-sq="8">square</div>
       </section>
-
       <footer class="footer">
         <p>created by Alex Tsuji 2019</p>
         <p>General Assembly SEI 05</p>
 
       </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </body>
 </html>
