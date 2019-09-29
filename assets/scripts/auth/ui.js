@@ -1,9 +1,11 @@
 const store = require('../store')
 const game = require('../gameplay/events')
+const display = require('./display')
 
 const onSignUpSuccess = function (formData) {
   console.log(formData)
-  $('#message-display').text(`sign up success: ${formData.user.email}`)
+  $('#user-auth')[0].reset()
+  $('#message-display').text(`sign up success: ${formData.user.email}`).css('font-weight', 'bold')
 }
 
 const onSignUpFailure = function () {
@@ -14,10 +16,12 @@ const onSignInSuccess = function (formData) {
   console.log("sign in successful")
   store.user = formData.user
   console.log(store)
-  $('#change-pass, #sign-out, #play-game, #game-data').show()
+  $('#user-auth')[0].reset()
+  $('#change-pass, #sign-out, #game-data').show()
   $('#sign-up, #sign-in, #enter-email, #enter-password, #submit').hide()
   $('#user-info').text('')
   $('#message-display').text(`signed in as: ${store.user.email}`)
+  $('#play-game').fadeIn(600)
 }
 
 const onSignInFailure = function () {
@@ -36,7 +40,11 @@ const onSignOutFailure = function () {
 }
 
 const onChangePasswordSuccess = function () {
+  display.status.changePass = !display.status.changePass
+  $('#user-auth')[0].reset()
   $('#user-info').text('change password successful')
+  $('#enter-old, #enter-new, #submit').hide()
+  $('#play-game').fadeIn(600)
 }
 
 const onChangePasswordFailure = function () {
