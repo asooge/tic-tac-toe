@@ -37,7 +37,7 @@ const clickChangePass = function () {
     display.status.changePass = true
     console.log(display.status)
     display.updateDisplay()
-    $('#player-display').show()
+    $('#player-display, #game-data').show()
   } else {
     $('#change-pass, #sign-out, #play-game').show()
     $('#sign-up, #sign-in, #enter-email, #enter-password, #submit, #enter-old, #enter-new').hide()

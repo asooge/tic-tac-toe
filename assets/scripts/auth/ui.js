@@ -5,6 +5,7 @@ const display = require('./display')
 const onSignUpSuccess = function (formData) {
   console.log(formData)
   $('#user-auth')[0].reset()
+  $('#enter-email, #enter-password, #submit, #enter-confirm-pass').hide()
   $('#message-display').text(`sign up success: ${formData.user.email}`).css('font-weight', 'bold')
 }
 
@@ -44,6 +45,7 @@ const onChangePasswordSuccess = function () {
   $('#user-auth')[0].reset()
   $('#user-info').text('change password successful')
   $('#enter-old, #enter-new, #submit').hide()
+  $('#game-data').show()
   $('#play-game').fadeIn(600)
 }
 
