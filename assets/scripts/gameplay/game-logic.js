@@ -4,8 +4,6 @@ const ui = require('./game-ui')
 
 const checkWinner = function () {
   const board = store.game.cells
-  console.log('check winner')
-  console.log(board)
   if (board[0] && board[0] === board[1] && board[1] === board[2]) {
     winnerIs(0)
   } else if (board[0] && board[0] === board[4] && board[4] === board[8]) {
@@ -69,15 +67,12 @@ const countWins = function (game) {
 const gameOver = function (winner) {
   store.winPlayer = store.game.cells[winner]
   api.endGame()
-    .then(console.log)
     .then(ui.showWinner(winner))
     .catch(ui.endGameFail)
 }
 
 const winnerIs = function (winner) {
-  console.log('winner is ' + winner)
   if (winner === 'tie') {
-    console.log('tie')
   }
   store.over = true
   gameOver(winner)

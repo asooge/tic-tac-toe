@@ -3,7 +3,6 @@ const game = require('../gameplay/events')
 const display = require('./display')
 
 const onSignUpSuccess = function (formData) {
-  console.log(formData)
   $('#user-auth')[0].reset()
   $('#enter-email, #enter-password, #submit, #enter-confirm-pass').hide()
   $('#message-display').text(`sign up success: ${formData.user.email}`).css('font-weight', 'bold')
@@ -15,9 +14,7 @@ const onSignUpFailure = function () {
 }
 
 const onSignInSuccess = function (formData) {
-  console.log("sign in successful")
   store.user = formData.user
-  console.log(store)
   $('#user-auth')[0].reset()
   $('#change-pass, #sign-out, #game-data').show()
   $('#sign-up, #sign-in, #enter-email, #enter-password, #submit').hide()
@@ -27,7 +24,6 @@ const onSignInSuccess = function (formData) {
 }
 
 const onSignInFailure = function () {
-  console.log("sign in failed")
   $('#message-display').text(`sign in failed`)
   $('#user-auth')[0].reset()
 }
@@ -56,13 +52,13 @@ const onChangePasswordFailure = function () {
   $('#user-auth')[0].reset()
 }
 
-
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
+  onSignOutFailure,
   onChangePasswordSuccess,
   onChangePasswordFailure
 }

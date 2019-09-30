@@ -25,7 +25,6 @@ const loadDisplay = function () {
 const updateDisplay = function () {
   clearDisplay()
   if (status.signUp) {
-    console.log("update display for sign up")
     $('#sign-up, #sign-in, #enter-email, #enter-password, #enter-confirm-pass, #submit').show()
   } else if (status.signIn) {
     $('#sign-up, #sign-in, #enter-email, #enter-password, #submit').show()
@@ -34,7 +33,6 @@ const updateDisplay = function () {
   } else if (status.signOut) {
     $('#sign-up, #sign-in').show()
   }
-
 }
 
 module.exports = {

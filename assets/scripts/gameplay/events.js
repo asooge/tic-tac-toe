@@ -26,10 +26,8 @@ const showData = function () {
 }
 
 const playGame = function () {
-  console.log('game is playing')
   store.currentMove = 'x'
   store.over = false
-  console.log(store)
   ui.displayPlayer()
   $('#play-game').hide()
   $('.game-board').children().text('s').css('color', 'transparent')
@@ -45,7 +43,6 @@ const switchPlayer = function (gameBoard) {
   } else if (store.currentMove === 'o') {
     store.currentMove = 'x'
   }
-  console.log(store.currentMove)
 }
 
 const storeData = function (gameBoard) {
@@ -53,13 +50,10 @@ const storeData = function (gameBoard) {
 }
 
 const turnX = function (event) {
-  console.log(event)
   store.event = event
   store.currentClick = parseInt(event.target.dataset.sq)
   if (!store.game.cells[store.currentClick]) {
     ui.changeBoard(event)
-    console.log('store over is')
-    console.log(store)
     api.updateGame()
       .then(storeData)
       .then(ui.displayPlayer)
@@ -67,7 +61,6 @@ const turnX = function (event) {
       .catch(ui.turnFail)
     switchPlayer()
   } else {
-    console.log('already clicked. need function to animate already clicked')
     $(event.target).addClass('animated shake').css('background-color', '#fc5603')
     setTimeout(() => { $(event.target).removeClass('animated shake').css('background-color', '#edece8') }, 750)
   }
