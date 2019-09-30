@@ -11,6 +11,7 @@ const onSignUpSuccess = function (formData) {
 
 const onSignUpFailure = function () {
   $('#message-display').text(`sign up failed`)
+  $('#user-auth')[0].reset()
 }
 
 const onSignInSuccess = function (formData) {
@@ -27,7 +28,8 @@ const onSignInSuccess = function (formData) {
 
 const onSignInFailure = function () {
   console.log("sign in failed")
-  $('#message-display').text(`unable to sign in`)
+  $('#message-display').text(`sign in failed`)
+  $('#user-auth')[0].reset()
 }
 
 const onSignOutSuccess = function () {
@@ -50,7 +52,8 @@ const onChangePasswordSuccess = function () {
 }
 
 const onChangePasswordFailure = function () {
-  $('#user-info').text('unable to change password')
+  $('#user-info').text('change password failed')
+  $('#user-auth')[0].reset()
 }
 
 
