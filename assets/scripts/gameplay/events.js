@@ -33,7 +33,7 @@ const playGame = function () {
   ui.displayPlayer()
   $('#play-game').hide()
   $('.game-board').children().text('square').css('color', 'transparent')
-  $('.game-board').off('click', turnX)
+  $('.game-board').off('mousedown', turnX)
   $('#player-display').fadeIn(800)
   api.createGame()
     .then(gameEvents)
@@ -73,16 +73,7 @@ const turnX = function (event) {
 
 const gameEvents = function(gameData) {
   store.game = gameData.game
-  $('.game-board').on('mouseup', turnX)
-  // $('#square-0').on('click', turnX)
-  // $('#square-1').on('click', turnX)
-  // $('#square-2').on('click', turnX)
-  // $('#square-3').on('click', turnX)
-  // $('#square-4').on('click', turnX)
-  // $('#square-5').on('click', turnX)
-  // $('#square-6').on('click', turnX)
-  // $('#square-7').on('click', turnX)
-  // $('#square-8').on('click', turnX)
+  $('.game-board').on('mousedown', turnX)
 }
 
 module.exports = {
