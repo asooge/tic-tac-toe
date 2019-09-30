@@ -10,7 +10,7 @@ const displayPlayer = function (gameBoard) {
 }
 
 const resetBoard = function () {
-  $('.game-board').children().text('square').css('color', 'transparent')
+  $('.game-board').children().text('s').css('color', 'transparent')
 }
 
 const changeBoard = function (event) {

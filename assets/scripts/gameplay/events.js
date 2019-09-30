@@ -32,7 +32,7 @@ const playGame = function () {
   console.log(store)
   ui.displayPlayer()
   $('#play-game').hide()
-  $('.game-board').children().text('square').css('color', 'transparent')
+  $('.game-board').children().text('s').css('color', 'transparent')
   $('.game-board').off('mousedown', turnX)
   $('#player-display').fadeIn(800)
   api.createGame()
@@ -68,6 +68,8 @@ const turnX = function (event) {
     switchPlayer()
   } else {
     console.log('already clicked. need function to animate already clicked')
+    $(event.target).addClass('animated shake').css('background-color', '#fc5603')
+    setTimeout(() => { $(event.target).removeClass('animated shake').css('background-color', '#edece8') }, 750)
   }
 }
 

@@ -1,4 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~animate.css/animate.min.css';
+
+body {
+  font-family: 'sans serif';
+}
 
 .sign-in {
   border: solid black 1px;
@@ -8,15 +13,19 @@ header {
   text-align: center;
   background-color: #4287f5;
   padding-top: 10px;
-  border: solid black 1px
+  border: solid black 1px;
 }
 
 .player-display {
   text-align: center;
+  display: block;
+  max-width: 600px;
+  margin: auto;
+  border-bottom: solid black 1px;
 }
 
 .game-board {
-  border: solid black 1px;
+
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
@@ -24,21 +33,35 @@ header {
   max-width: 600px;
   max-height: 600px;
   padding: 0;
+  background-color: #edece8;
 }
 
 
 .square {
   padding: 0;
   display: flex;
-  border: solid black 1px;
+  border-top: solid black 1px;
+  border-right: solid black 1px;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 12vmin;
   color: transparent;
+  cursor: pointer;
+  background-color: #edece8;
+}
+
+.square:nth-child(3n){
+  border-right: 0;
+}
+
+.square:nth-child(-n+3){
+  border-top: solid black 1px;
 }
 
 footer {
   background-color: #4287f5;
+  border-top: solid black 1px;
+  border-bottom: solid black 1px;
 }
 
 .play-game {
@@ -49,4 +72,5 @@ footer {
 #game-display {
   display: block;
   border: solid black 1px;
+  border-top: 0;
 }
