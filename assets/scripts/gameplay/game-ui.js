@@ -30,7 +30,7 @@ const showWinner = function (winner) {
     $('#player-display').text(`Player ${store.winPlayer.toUpperCase()} Wins!`)
   }
   $('#play-game').show()
-  $('.game-board').off('click', event.turnX)
+  $('.game-board').off('mouseup', event.turnX)
 }
 
 const endGameFail = function () {

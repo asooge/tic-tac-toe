@@ -73,7 +73,7 @@ const turnX = function (event) {
 
 const gameEvents = function(gameData) {
   store.game = gameData.game
-  $('.game-board').on('click', turnX)
+  $('.game-board').on('mouseup', turnX)
   // $('#square-0').on('click', turnX)
   // $('#square-1').on('click', turnX)
   // $('#square-2').on('click', turnX)
