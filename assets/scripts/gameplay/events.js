@@ -4,7 +4,7 @@ const ui = require('./game-ui')
 const game = require('./game-logic')
 const uiAuth = require('../auth/display')
 
-const storeGameData = function(data) {
+const storeGameData = function (data) {
   store.gameData = data
   store.gameData.wins = 0
   store.gameData.ties = 0
@@ -46,6 +46,9 @@ const switchPlayer = function (gameBoard) {
     store.currentMove = 'x'
   }
   console.log(store.currentMove)
+}
+
+const storeData = function (gameBoard) {
   store.game = gameBoard.game
 }
 
@@ -58,10 +61,11 @@ const turnX = function (event) {
     console.log('store over is')
     console.log(store)
     api.updateGame()
-      .then(switchPlayer)
+      .then(storeData)
       .then(ui.displayPlayer)
       .then(game.checkWinner)
       .catch(ui.turnFail)
+    switchPlayer()
   } else {
     console.log('already clicked. need function to animate already clicked')
   }
