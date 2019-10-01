@@ -1,129 +1,91 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# Tic Tac Toe: GA Project 1
 
-# browser-template
+This application allows a user to sign up for an account and play multiple
+rounds of tic-tac-toe. Game data can be displayed for the user including
+total games completed, win/loss/tie ratio, and win percentage.
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+### Technologies Used:
 
-## Installation
+  -Core web technologies: HTML, CSS, JavaScript.
 
-1. [Download](../../archive/master.zip) this template.
-    - **Do Not Fork And Clone**
-    - Click the "Clone or Download" button and select "Download Zip".
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `ga-wdi-boston.browser-template` with the name of
-    your project.
-    - You can search for all instances of text in Atom by pressing
-    `commant + shift + f` on Mac or `ctrl + shift + f` on WSL.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+  -jQuery used for DOM manipulation.
 
-## Structure
+  -AJAX used for api requests.
 
-### Scripts
+  -Bootstrap used to aid styling and layout.
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+  -Animate.css used for basic animations of the gameboard and player display on load and on click.
 
-### Config
+### Important Links:
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+  Deployed API: https://tic-tac-toe-wdi-production.herokuapp.com
 
-### Styles
+  Deployed client: https://asooge.github.io/tic-tac-toe/
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+### Planning and development process:
 
-### Forms and Using `getFormFields`
+  Began planning with a basic wireframe layout of what I wanted the page to
+  look like. Emphasis was put on the mobile layout to make the game attractive
+  and accessible to the largest possible audience. From there, basic html layout was
+  completed and simple CSS styling to create the layout of the page and the
+  game board. I wanted the user authorization process to be included all in
+  one form, and responsive to the state of the user (signed in or not) so I
+  created a variable called status that would track the status of the user
+  authorization. When sign up, sign in, change password, or sign out was clicked,
+  the page would respond dynamically by showing and hiding html elements as
+  appropriate.
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+  The submit button would now require the neccesary data from the form depending
+  on the status and send an ajax request to the api only if neccessary data was
+  included in the user input. Once user was signed in, the "play game" button
+  would appear which would start the game on click.
 
-### Deployment
+  Once the layout and user authorization were completed and functional, I moved
+  on to the game functionality. the "play game" button would start the game by
+  triggering an ajax request to create a new game. The game data would then be
+  stored to the global 'store' object. Each click of the board would register
+  with a dataset corresponding to the index of the square (0-8) and player x
+  or player o would be tracked in the global 'store' object. This information
+  would be used to update the api with each move, check for a winner, and
+  display the results on the gameboard.
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+  Once there was a winner, the ui would update to display which player won the
+  game, and the 'play game button' would reappear so the user can play another
+  game with a fresh gameboard and create a new game object.
 
-## Adding Images
+  At any time, the signed-in user can sign out, and change their password,
+  as well as display game data based on their history.
 
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
+### User Stories:
 
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
-```
+1) As a user I want to be able to sign in and log my game history/data.
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
+2) As a user I want access to my game data win/loss/tie ratios.
 
-## Adding Fonts
+3) As a user I want to be able to save a game state and return upon next login
 
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
+4) As a user I want to be able to play against the computer.
 
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
+5) As a user I want to play the game on my phone with all the same functionality.
 
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
+### Unsolved problems to fix in future iterations:
 
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
+  Would like to enable playing against a computer in future iterations.
+  Difficulty settings will be easy, medium, and hard.
 
-## Tasks
+  Also, noticed that following a win, the other player can very quickly make a
+  move, because a winner is not declared until after the api is called and
+  patched with the winning move. This is a minor bug/glitch. A possible
+  solution to this problem would be to update the game array on the client side
+  and determine a winner, before patching the api. This way the client will
+  determine and annouce a winner in a synchronous fashion and not allow another move.
 
-Developers should run these often!
+  I'm satisfied with the mobile layout, but would like to update the layout on desktop so that the user authorization and game data is on
+  the left side of the page, with the gameboard taking up the remainder of the page. A possible solution would be to use flex box and or
+  bootstrap containers.
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-- `grunt deploy`: builds and deploys master branch
+  Additionally, could use further styling to improve on the color scheme and font-family. SASS would be useful in coordinating styling for the page.
 
+### Wireframes:
 
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+![wireframe](images/wireframe.JPG)

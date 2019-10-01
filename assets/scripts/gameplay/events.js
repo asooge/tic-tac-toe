@@ -50,6 +50,8 @@ const storeData = function (gameBoard) {
 }
 
 const turnX = function (event) {
+  $('.game-board').off('mousedown', turnX)
+  setTimeout(() => { $('.game-board').on('mousedown', turnX) }, 500)
   store.event = event
   store.currentClick = parseInt(event.target.dataset.sq)
   if (!store.game.cells[store.currentClick]) {
