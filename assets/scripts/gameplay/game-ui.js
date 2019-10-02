@@ -15,6 +15,10 @@ const resetBoard = function () {
   $('.game-board').children().text('s').css('color', 'transparent')
 }
 
+const resetClick = function () {
+  $('.game-board').on('mousedown', event.turnX)
+}
+
 const changeBoard = function (event) {
   $(event.target).text(store.currentMove).css('color', 'black')
 }
@@ -24,6 +28,7 @@ const turnFail = function () {
 }
 
 const showWinner = function (winner) {
+  $('.game-board').off('mousedown', event.turnX)
   if (winner === 'tie') {
     $('#player-display').text('Tie Game')
     setTimeout(() => { $('#player-display').addClass('animated flip') }, 1200)
@@ -34,7 +39,6 @@ const showWinner = function (winner) {
     setTimeout(() => { $('#player-display').removeClass('animated tada') }, 3000)
   }
   $('#play-game').show()
-  $('.game-board').off('mousedown', event.turnX)
 }
 
 const endGameFail = function () {
@@ -55,5 +59,6 @@ module.exports = {
   resetBoard,
   showWinner,
   endGameFail,
-  displayData
+  displayData,
+  resetClick
 }

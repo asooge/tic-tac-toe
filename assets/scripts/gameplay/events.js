@@ -51,7 +51,6 @@ const storeData = function (gameBoard) {
 
 const turnX = function (event) {
   $('.game-board').off('mousedown', turnX)
-  setTimeout(() => { $('.game-board').on('mousedown', turnX) }, 500)
   store.event = event
   store.currentClick = parseInt(event.target.dataset.sq)
   if (!store.game.cells[store.currentClick]) {
@@ -62,9 +61,11 @@ const turnX = function (event) {
       .then(game.checkWinner)
       .catch(ui.turnFail)
     switchPlayer()
+    $('.game-board').on('mousedown', turnX)
   } else {
     $(event.target).addClass('animated shake').css('background-color', '#fc5603')
     setTimeout(() => { $(event.target).removeClass('animated shake').css('background-color', '#edece8') }, 750)
+    $('.game-board').on('mousedown', turnX)
   }
 }
 
